@@ -1,4 +1,4 @@
-# kaleido-nethereum-example
+# Nethereum Example Application
 An example application on Kaleido using Nethereum. This demonstrates how to connect to a Kaleido node using basic auth and retrieves an account balance.
 
 ## Steps
