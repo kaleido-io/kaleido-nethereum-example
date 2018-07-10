@@ -9,6 +9,11 @@ namespace Application
 {
     class Program
     {
+        // Fill these in to test
+        static string RPC_ENDPOINT = "";
+        static string USER = "";
+        static string PASS = "";
+        static string ACCOUNT_ADDRESS = "";
 
         static decimal balance;
 
@@ -24,15 +29,16 @@ namespace Application
         static async Task getEthBalance() 
         {
             // Encode App Credentials as <username>:<password>
-            var byteArray = Encoding.ASCII.GetBytes("u0hy7mtdq3:mD29RPL7yEpwZqnqKPHGHbkdMoOAbUMO2JnUGYwO2LI");
+            var byteArray = Encoding.ASCII.GetBytes(USER + ":" + PASS);
             AuthenticationHeaderValue auth = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-            // Create the RPC Client to talk to the Kaleido endpoint using web3
-            IClient client = new RpcClient(new Uri("https://u0p56k3t54-u0p9sxe7c1-rpc.us-east-2.kaleido.io"), auth, null, null, null);
+            // Create the RPC Client to talk to the Kaleido RPC endpoint using web3
+            IClient client = new RpcClient(new Uri(RPC_ENDPOINT), auth, null, null, null);
             var web3 = new Web3(client);
 
+            //Now we can test the connection by calling some basic function
             // Get the account balance of my account
-            var some = await web3.Eth.GetBalance.SendRequestAsync("0x03374797eF307f9BCB303DE14008C76441193Fd2");
+            var some = await web3.Eth.GetBalance.SendRequestAsync(ACCOUNT_ADDRESS);
 
             // Set variable for use in other places
             balance = Web3.Convert.FromWei(some.Value);
