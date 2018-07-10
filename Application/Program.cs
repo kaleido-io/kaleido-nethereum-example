@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication2
+namespace Application
 {
     class Program
     {
